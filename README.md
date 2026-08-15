@@ -7,7 +7,7 @@ Bu proje, klinik parametreler (örn. BMI, kan glukozu, HbA1c vb.) kullanarak diy
 ## Proje yapısı
 
 ```
-README.md                              - Proje özeti ve hızlı başlatma talimatları
+README.md                              - Proje özeti & hızlı başlatma talimatları
 requirements.txt                       - Projede kullanılan Python paketleri
 diabet-prediction-gradientboost.ipynb  - Ana Jupyter Notebook: veri yükleme, EDA, ön işleme, modelleme, optimizasyon, görselleştirme
 diabetes_prediction_dataset.csv        - Notebook tarafından kullanılan veri seti (repo kökünde)
@@ -24,8 +24,8 @@ diabetes_prediction_dataset.csv        - Notebook tarafından kullanılan veri s
 ## Veri seti
 
 - Dosya: `diabetes_prediction_dataset.csv` (repo kökünde)
+- Kaynak: Kaggle (lütfen repo dışı paylaşım ve lisans şartlarına dikkat edin). Eğer spesifik Kaggle sayfası URL'sini paylaşırsanız onu da buraya ekleyeyim.
 - Kolonlar (notebook'tan çıkarıldı): `gender`, `age`, `hypertension`, `heart_disease`, `smoking_history`, `bmi`, `HbA1c_level`, `blood_glucose_level`, `diabetes`
-- Kaynak / lisans: README'ye eklenmedi. Lütfen veri setinin kaynağını, lisansını ve varsa atıf bilgisini buraya ekleyin.
 
 ## Kurulum ve Çalıştırma
 
@@ -39,30 +39,37 @@ python -m pip install -r requirements.txt
 jupyter notebook diabet-prediction-gradientboost.ipynb
 ```
 
+Alternatif (headless) çalıştırma için:
+
+```bash
+# Conda ortamı oluşturduktan sonra
+bash run_notebook.sh  # papermill ile notebook'u çalıştırır ve outputs/ içine kaydeder
+bash run_train.sh     # basit eğitim script'ini çalıştırır ve models/best_model.pkl kaydeder
+```
+
 Notlar:
 - Python sürümü için öneri: Python 3.9–3.11 (kullandığınız ortamda uyumlu sürümü tercih edin).
-- Tek komutla notebook'u baştan çalıştırmak isterseniz papermill veya nbconvert ekleyebilirsiniz; isterseniz ben örnek bir run script'i ekleyebilirim.
 
 ## Yeniden Üretilebilirlik
 
-- Rastgelelik kontrolü için notbook'ta kullanılan seed ve sürüm bilgilerini README'ye veya ayrı bir `environment.yml`/`requirements.txt` içine sabitlemeniz önerilir.
-- `requirements.txt` mevcut; daha kesin bağımlılık yönetimi için `environment.yml` (conda) veya pip `constraints.txt` ekleyebilirsiniz.
+- Rastgelelik kontrolü için notebook'ta kullanılan seed ve sürüm bilgilerini README'ye veya ayrı bir `environment.yml`/`requirements.txt` içine sabitlemeniz önerilir.
+- `requirements.txt` mevcut; daha kesin bağımlılık yönetimi için `environment.yml` (conda) veya pip `constraints.txt` eklenmiştir.
 
 ## Sonuçlar
 
-Model karşılaştırmaları, hiperparametre aramaları ve değerlendirme metrikleri tümüyle `diabet-prediction-gradientboost.ipynb` içinde yer almaktadır. Hızlı bir özet eklemek isterseniz (ör. en iyi model ve AUC/precision/recall), ben README'ye kısa bir sonuç bölümü ekleyebilirim — bu bilgi notebook'tan alınmalıdır.
+Model karşılaştırmaları, hiperparametre aramaları ve değerlendirme metrikleri tümüyle `diabet-prediction-gradientboost.ipynb` içinde yer almaktadır. Hızlı bir özet eklemek isterseniz (ör. en iyi model ve AUC/precision/recall), notebook'u çalıştırıp çıktıdan bu değerleri README'ye ekleyebilirim.
 
 ## Model Kaydetme ve Kullanım
 
-Notebook'ta en iyi modeli kaydetme adımı bulunmuyorsa, `joblib` veya `pickle` ile kaydetme örneği eklenmesi yararlı olur. İsterseniz `models/` klasörü oluşturup `models/best_model.pkl` şeklinde kaydetmeyi otomatikleştiren bir script ekleyebilirim.
+Notebook'ta en iyi modeli kaydetme adımı bulunmuyorsa, `joblib` veya `pickle` ile kaydetme örneği eklenmesi yararlı olur. `models/` klasörü repoya eklendi ve basit bir eğitim script'i (`train_and_save.py`) ile modeller/models/best_model.pkl kaydedilebilir.
 
 ## Lisans
 
-Lütfen projeye bir LICENSE dosyası ekleyin (ör. MIT) veya mevcut lisans bilgisini README'ye ekleyin. Şu anda lisans belirtilmemiştir.
+Bu repository'nin kodu MIT lisansı altında yayımlanmıştır — detaylar LICENSE dosyasında.
 
 ## Katkıda Bulunma
 
-Katkılar için lütfen issue açın veya pull request gönderin. Küçük düzenlemeler için doğrudan PR kabul edilir.
+Katkılar için lütfen issue açın veya pull request gönderin. Küçük düzenlemeler için doğrudan PR kabul edilir. Daha fazla bilgi için CONTRIBUTING.md dosyasına bakın.
 
 ## İletişim
 
@@ -70,4 +77,4 @@ Soru/suggestion için repository sahibi: @MuhamedEminKrd
 
 ---
 
-*Not:* README'deki veri kaynağı, lisans ve varsa çalışma sonuçları (en iyi model, metrikler) gibi boşlukları doldurursanız README'yi daha da güçlendirip tekrar commitleyebilirim.
+*Not:* README'deki veri kaynağına "Kaggle" olarak eklendi. Eğer Kaggle sayfasının tam URL'sini paylaşırsanız onu da README'ye ekleyip tekrar commitleyeyim.
